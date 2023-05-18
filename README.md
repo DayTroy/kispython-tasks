@@ -1,4 +1,4 @@
-# Задачи решенные на kispython.ru
+# Задачи, решенные на kispython.ru
 <p align="center">
   <img src="https://github.com/DayTroy/kispython-tasks/assets/70051506/0861efe3-c716-4103-85b5-404d9db2fa1b" />
 </p>
