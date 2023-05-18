@@ -1,2 +1,16 @@
 # Задача №1
-![image](https://github.com/DayTroy/kispython-tasks/assets/70051506/b204b9d9-ec21-44fd-abe0-a44641651c83)
+Реализовать функцию:
+
+![image](https://github.com/DayTroy/kispython-tasks/assets/70051506/eac28190-bc3d-4a35-9c14-1bfd654ac506)
+
+Примеры результатов вычислений:
+
+main(-0.26, -0.3, 0.85) = 1.39e+06
+
+main(-0.36, 0.22, 0.9) = 5.10e+05
+
+main(-0.85, 0.5, -0.41) = -6.11e+05
+
+main(-0.77, -0.6, 0.8) = -4.16e+05
+
+main(-0.45, -0.43, -0.0) = -5.80e+05
