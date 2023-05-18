@@ -1,2 +1,16 @@
 # Задача №2
-![image](https://github.com/DayTroy/kispython-tasks/assets/70051506/7e97245e-0f65-45c2-a8b5-20b5957a96dd)
+Реализовать кусочную функцию:
+
+![image](https://github.com/DayTroy/kispython-tasks/assets/70051506/2edac646-8388-4cb0-97b7-189ecedda012)
+
+Примеры результатов вычислений:
+
+f(275) = -8.44e+18
+
+f(197) = 3.42e+27
+
+f(133) = 2.55e+51
+
+f(306) = -1.78e+19
+
+f(274) = -8.23e+18
