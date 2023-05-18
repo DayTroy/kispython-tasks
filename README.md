@@ -1,2 +1,16 @@
 # Задача №4
-![image](https://github.com/DayTroy/kispython-tasks/assets/70051506/84bcf61a-a1a3-449c-bc1d-5452f8e9bdec)
+Реализовать функцию по рекуррентной формуле:
+
+![image](https://github.com/DayTroy/kispython-tasks/assets/70051506/4b8dad04-7720-4ced-9a93-1ffcc84fdd6c)
+
+Примеры результатов вычислений:
+
+f(6) = 2.35e+03
+
+f(4) = 4.75e+00
+
+f(3) = 3.67e+00
+
+f(7) = 6.27e+09
+
+f(5) = 7.48e+02
