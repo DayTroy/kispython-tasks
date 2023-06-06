@@ -1,44 +1,43 @@
-class Mealy:
+class Solver:
     def __init__(self):
-        self.state = "A"
+        self.data = "A"
 
-    def load(self):
-        if self.state == "A":
-            self.state = "B"
+    def send(self):
+        if self.data == "A":
+            self.data = "B"
             return 0
-        if self.state == "B":
-            self.state = "C"
-            return 1
-        if self.state == "C":
-            self.state = "D"
-            return 2
-        if self.state == "D":
-            return 5
-        if self.state == "F":
-            self.state = "D"
-            return 8
-        raise MealyError("load")
-
-    def punch(self):
-        if self.state == "D":
-            self.state = "E"
+        if self.data == "D":
+            self.data = "B"
             return 4
-        if self.state == "E":
-            self.state = "F"
+        if self.data == "E":
+            self.data = "F"
+            return 5
+        if self.data == "F":
+            self.data = "G"
             return 6
-        if self.state == "F":
-            self.state = "G"
-            return 7
-        raise MealyError("punch")
+        if self.data == "G":
+            self.data = "E"
+            return 8
 
-    def tread(self):
-        if self.state == "C":
-            self.state = "F"
+        raise MealyError('send')
+
+    def patch(self):
+        if self.data == "B":
+            self.data = "C"
+            return 1
+        if self.data == "C":
+            self.data = "D"
+            return 2
+        if self.data == "D":
+            self.data = "E"
             return 3
-        if self.state == "F":
-            self.state = "A"
+        if self.data == "F":
+            self.data = "B"
+            return 7
+        if self.data == "G":
+            self.data = "B"
             return 9
-        raise MealyError("tread")
+        raise MealyError('patch')
 
 
 class MealyError(Exception):
@@ -46,7 +45,7 @@ class MealyError(Exception):
 
 
 def main():
-    return Mealy()
+    return Solver()
 
 
 def raises(method, error):
@@ -60,88 +59,38 @@ def raises(method, error):
 
 def test():
     o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.load() == 2
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.punch() == 7
+    assert o.send() == 0
+    assert o.patch() == 1
+    assert o.patch() == 2
+    assert o.send() == 4
     o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.load() == 2
-    assert o.load() == 5
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.load() == 8
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.punch() == 7
+    assert o.send() == 0
+    assert o.patch() == 1
+    assert o.patch() == 2
+    assert o.patch() == 3
+    assert o.send() == 5
+    assert o.patch() == 7
     o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.punch() == 7
+    assert o.send() == 0
+    assert o.patch() == 1
+    assert o.patch() == 2
+    assert o.patch() == 3
+    assert o.send() == 5
+    assert o.send() == 6
+    assert o.patch() == 9
     o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.load() == 8
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.punch() == 7
-    o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.tread() == 9
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.punch() == 7
-    o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.tread() == 9
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.load() == 2
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.punch() == 7
-    o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.tread() == 9
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.load() == 2
-    assert o.load() == 5
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.punch() == 7
-    o = main()
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.tread() == 3
-    assert o.tread() == 9
-    assert o.load() == 0
-    assert o.load() == 1
-    assert o.load() == 2
-    assert o.load() == 5
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.load() == 8
-    assert o.punch() == 4
-    assert o.punch() == 6
-    assert o.punch() == 7
-    raises(lambda: o.punch(), MealyError)
-    o = main()
-    raises(lambda: o.tread(), MealyError)
-    assert o.load() == 0
-    raises(lambda: o.punch(), MealyError)
+    assert o.send() == 0
+    assert o.patch() == 1
+    assert o.patch() == 2
+    assert o.patch() == 3
+    assert o.send() == 5
+    assert o.send() == 6
+    assert o.send() == 8
+    assert o.send() == 5
+    assert o.patch() == 7
 
-
-test()
+    raises(lambda: o.send(), MealyError)
+    o = main()
+    raises(lambda: o.patch(), MealyError)
+    assert o.send() == 0
+    raises(lambda: o.send(), MealyError)
