@@ -4,7 +4,7 @@ def main(n):
     if n == 1:
         return 0.60
     if n >= 2:
-        return 15 * main(n - 2)**3 + 0.02 + main(n - 1)
+        return 15 * main(n - 2) ** 3 + 0.02 + main(n - 1)
 
 
 print(main(6))
