@@ -5,8 +5,10 @@ def main(m, z, n, y):
     sum1 = 0
     sum2 = 0
     for k in range(1, m + 1):
-        sum1 += (math.exp((k ** 2) + z)) ** 5 + math.sin(k) / \
-                72 + (math.ceil(z ** 2)) ** 4
+        sum1 += (
+            (math.exp((k ** 2) + z)) ** 5 + math.sin(k) / \
+            72 + (math.ceil(z ** 2)) ** 4
+        )
 
     for k in range(1, n + 1):
         sum2 += 38 * (k ** 2 - 53 * y ** 3) ** 6
